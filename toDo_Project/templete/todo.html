@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body style="margin:0 auto;">
+    <h1>Make list of yours tasks</h1>
+    <div class="list">
+      <ol>
+        {% for todo_item in all_items %}
+        <li style="margin:10px;">
+          <h4 style="display:inline;text-transform:uppercase;">
+            {{todo_item.content}}</h4>
+
+          <form class="" action="/deletetodo/{{todo_item.id}}/"
+                style = "display:inline;"
+                method="post"> {% csrf_token %}
+            <input type="submit" name="" value="DELETE"
+             style=
+             "margin-left:20px;
+              background:purple;
+              color:#fff;
+              padding:5px;
+              cursor:pointer;
+              border-radius:5px;
+              ">
+          </form>
+        </li>
+        {% endfor %}
+      </ol>
+      <form class="" action="/addtodo/" method="post"> {% csrf_token %}
+        <input type="text" name="content" value="">
+        <input type="submit" name="" value="ADD">
+      </form>
+    </div>
+  </body>
+</html>
